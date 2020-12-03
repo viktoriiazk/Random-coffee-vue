@@ -1,8 +1,8 @@
 <template>
   <div class="header-wrap">
-    <div class="logo"><logo /></div>
-    <div class="social"><social /></div>
-    <div class="login"><login /></div>
+    <div class="header-wrap__item logo"><logo /></div>
+    <div class="header-wrap__item social"><social /></div>
+    <div class="header-wrap__item login"><login /></div>
   </div>
 </template>
 <script>
@@ -16,14 +16,19 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "../styles/main.scss";
+
 .header-wrap {
   display: flex;
   justify-content: space-between;
-
+  &__item {
+    max-width: 33%;
+    width: 100%;
+  }
   .social {
     @include flex-center-center;
-    max-width: 150px;
-    width: 100%;
+  }
+  .login {
+    @include flex-center-center;
   }
 }
 </style>
