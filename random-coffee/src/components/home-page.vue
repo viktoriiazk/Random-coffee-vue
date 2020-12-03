@@ -1,7 +1,8 @@
 <template>
-    <div>
-    <headerBlock/>
-    </div>
+<div class="container">
+<headerBlock/>
+</div>
+    
 </template>
 <script>
 import headerBlock from './header';

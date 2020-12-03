@@ -16,6 +16,9 @@ export default {
 }
 </script>
 
-<style lang="scss">
-
+<style lang="scss" >
+@import './styles/main.scss';
+#app {
+   background-color: $bgDark;
+}
 </style>
