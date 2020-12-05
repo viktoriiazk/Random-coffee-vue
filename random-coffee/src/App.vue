@@ -20,5 +20,6 @@ export default {
 @import './styles/main.scss';
 #app {
    background-color: $bgDark;
+   min-height: 100vh;
 }
 </style>

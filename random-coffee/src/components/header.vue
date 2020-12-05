@@ -20,7 +20,8 @@ export default {
 .header-wrap {
   display: flex;
   justify-content: space-between;
-  &__item {
+  padding: 1rem 0;
+    &__item {
     max-width: 33%;
     width: 100%;
   }

@@ -18,6 +18,7 @@ export default {};
   width: 100%;
   a {
     color: $lightTextColor;
+    font-family: $fontMain;
   }
 }
 </style>
