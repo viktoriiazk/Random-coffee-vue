@@ -40,6 +40,12 @@ ol, ul {
 a {
 text-decoration: none;
 }
+button {
+    background-color: none;
+    border: none;
+    padding: 0;
+    font: 0;
+}
 
 
 /* main css styles */
@@ -47,8 +53,8 @@ text-decoration: none;
 html {
     font-size: 16px;
     font-family: 'PT Sans', sans-serif;
+   
 }
-
 .container {
     max-width: 1140px;
     width: 100%;
