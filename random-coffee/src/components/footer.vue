@@ -22,9 +22,9 @@
     <div class="footer-wrap__item contacts-rights">
     <div class="contacts">
     <a href="mailto:viktoriia.zakorchemna@gmail.com" target="_blank"><img src="@/assets/email.svg" alt="email logo"></a>
-    <a href="https://www.linkedin.com/in/viktoriia-zakorchemna/" target="_blank"><img src="@/assets/email.svg" alt="linkedin logo"></a>
-    <a href="tel:+48577138755" target="_blank"><img src="@/assets/email.svg" alt="phone"></a>
-    <a href="skype:viktoriia.zakorchemna_1" target="_blank"><img src="@/assets/email.svg" alt="skype logo"></a>
+    <a href="https://www.linkedin.com/in/viktoriia-zakorchemna/" target="_blank"><img src="@/assets/linkedin.svg" alt="linkedin logo"></a>
+    <a href="tel:+48577138755" target="_blank"><img src="@/assets/phone.svg" alt="phone"></a>
+    <a href="skype:viktoriia.zakorchemna_1" target="_blank"><img src="@/assets/skype.svg" alt="skype logo"></a>
 
     </div>
     <small> &copy; 2020 All rights reserved</small>

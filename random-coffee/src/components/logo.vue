@@ -1,6 +1,6 @@
 <template>
     <div class="logo-wrap">
-    <img src="@/assets/logo.png" alt=""></div>
+    <img src="@/assets/Logo.svg" alt=""></div>
 </template>
 <script>
 export default {

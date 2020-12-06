@@ -1,8 +1,6 @@
 <template>
   <div class="social-wrap">
-    <a href="https://github.com/viktoriiazk"
-      ><img src="@/assets/social/github.png" alt="Github logo"
-    /></a>
+    <a href="https://github.com/viktoriiazk" target="_blank"><img src="@/assets/social/github.svg" alt="Github logo"/></a>
     <a href="https://www.linkedin.com/in/viktoriia-zakorchemna/" target="_blank"><img src="@/assets/social/linkedin.svg" alt="Linkedin logo" /></a>
     <a href="https://www.facebook.com/viktoriia.zakorchemna/" target="_blank"><img src="@/assets/social/facebook.svg" alt="Facebook logo" /></a>
     <a href="https://www.instagram.com/viktoriia_zakorchemna/" target="_blank"><img src="@/assets/social/instagram.svg" alt="Instagram logo" /></a>

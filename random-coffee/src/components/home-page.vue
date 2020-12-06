@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container home-wrap">
     <headerBlock />
     <mainBlock />
     <footerBlock />
@@ -17,3 +17,13 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+@import "../styles/main.scss";
+
+.home-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+</style>
