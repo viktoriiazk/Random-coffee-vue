@@ -2,15 +2,15 @@
   <div class="header-wrap">
     <div class="header-wrap__item logo"><logo /></div>
     <div class="header-wrap__item social"><social /></div>
-    <div class="header-wrap__item login"><login /></div>
+    <!-- <div class="header-wrap__item login"><login /></div> -->
   </div>
 </template>
 <script>
 import logo from "./logo.vue";
 import social from "./social";
-import login from "./login";
+// import login from "./login";
 export default {
-  components: { logo, social, login },
+  components: { logo, social, /*login*/ },
   name: "header-block",
 };
 </script>
@@ -21,10 +21,7 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 1rem 0;
-    &__item {
-    max-width: 33%;
-    width: 100%;
-  }
+
   .social {
     @include flex-center-center;
   }

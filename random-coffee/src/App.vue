@@ -29,8 +29,8 @@ export default {
         tha: [-140, 140],
         // body: "./img/icon.png", // Whether to render pictures
         rotate: [20, 20],
-        alpha: [0.6, 5],
-        scale: [1.5, 0.1],
+        alpha: [6, 5],
+        scale: [2.5, 0.5],
         position: "all", // all or center or {x:1,y:1,width:100,height:100}
         color: ["#8071DC", "#F2C94C"],
         cross: "cross", // cross or bround

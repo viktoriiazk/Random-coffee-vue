@@ -16,6 +16,7 @@ export default {};
 .social-wrap {
   @include flex-center-center;
   justify-content: space-between;
+  flex-direction: column;
   max-width: 150px;
   width: 100%;
  
