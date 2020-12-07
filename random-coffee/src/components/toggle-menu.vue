@@ -35,6 +35,7 @@ export default {
     overflow: hidden;
     transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
     background-color: $btnLight;
+
     &:nth-child(1) {
       top: 15px;
     }
@@ -45,7 +46,11 @@ export default {
       right: 0;
     }
    
+  
   }
-
+ &:hover span {
+       box-shadow:  0px 0px 20px 4px rgba(242, 201, 76, 1);
+       transition: 0.3s;
+   }
 }
 </style>
