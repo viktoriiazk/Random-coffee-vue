@@ -2,18 +2,18 @@
   <div class="container home-wrap">
     <headerBlock />
     <mainBlock />
-    <footerBlock />
+    <!-- <footerBlock /> -->
   </div>
 </template>
 <script>
 import headerBlock from "./header";
 import mainBlock from "./main";
-import footerBlock from "./footer";
+// import footerBlock from "./footer";
 export default {
   components: {
     headerBlock,
     mainBlock,
-    footerBlock,
+    // footerBlock,
   },
 };
 </script>

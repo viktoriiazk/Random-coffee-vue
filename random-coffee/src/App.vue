@@ -22,9 +22,9 @@ export default {
     return {
       config: {
         num: [15, 15],
-        rps: 0.8,
+        rps: 0.5,
         radius: [4, 4],
-        life: [1.5, 1],
+        life: [4.5, 1],
         v: [3, 1],
         tha: [-140, 140],
         // body: "./img/icon.png", // Whether to render pictures
