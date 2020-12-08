@@ -1,8 +1,8 @@
 <template>
   <div class="login-wrap">
-    <div class="newCompany"><a href="#">Register a company</a></div>
-    <div class="signIn"><a href="#">Login</a></div>
-    <div class="signUp"><a href="#">Sign Up</a></div>
+    <!-- <div class="newCompany"><a href="#">Register a company</a></div> -->
+    <div class="signIn text-hover-dark"><a href="#">Sign In</a></div>
+    <div class="signUp text-hover-dark"><a href="#">Sign Up</a></div>
   </div>
 </template>
 
@@ -14,8 +14,10 @@ export default {};
 @import "../styles/main.scss";
 .login-wrap {
   @include flex-sb-center;
-
-  width: 100%;
+  width: 120px;
+  .text-hover-dark {
+    @include hover-text-ligth;
+  }
   a {
     color: $lightTextColor;
     font-family: $fontMain;

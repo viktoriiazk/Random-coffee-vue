@@ -13,3 +13,9 @@
         transform: scale(1.3); 
     }
 }
+@mixin hover-text-ligth {
+    :hover {
+        color: $darkTextColor;
+        transition: 0.3s;
+    }
+}

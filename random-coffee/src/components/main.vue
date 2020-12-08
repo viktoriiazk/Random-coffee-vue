@@ -22,6 +22,7 @@ export default {
 @import "../styles/main.scss";
 .main-wrap {
   @include flex-center-center;
+  transform: translate(0, 50%);
   .main {
     text-align: center;
     max-width: 780px;

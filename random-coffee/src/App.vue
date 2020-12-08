@@ -1,7 +1,8 @@
 <template>
   <div data-cursor-hover data-cursor-mix-blend-mode="difference" id="app">
-    <particles-bg type="custom" :config="config" :bg="true" />
-      
+    <particles-bg type="cobweb" :bg="true"/>
+          <!-- <particles-bg type="custom" :config="config" :bg="true" /> -->
+
     <cursor-fx data-cursor-hover
         data-cursor-mix-blend-mode="difference" color-hover="#fff" color="#fff" />
     <Home />

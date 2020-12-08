@@ -1,19 +1,23 @@
 <template>
-  <div class="toggle-wrap" @click="console">
+<div class="menu-wrap">
+ <div class="toggle-wrap" @click="console">
     <span></span>
     <span></span>
     <span></span>
   </div>
+  <div class="menu-body">
+      gjhdsgfjdgj
+  </div>
+</div>
+ 
 </template>
 <script>
 export default {
-  
-        methods: {
- console: function(){
-     console.log('hello');
- }
-        }
-       
+  methods: {
+    console: function () {
+      console.log("hello");
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -45,12 +49,10 @@ export default {
       left: auto;
       right: 0;
     }
-   
-  
   }
- &:hover span {
-       box-shadow:  0px 0px 20px 4px rgba(242, 201, 76, 1);
-       transition: 0.3s;
-   }
+  &:hover span {
+    box-shadow: 0px 0px 20px 4px rgba(242, 201, 76, 1);
+    transition: 0.3s;
+  }
 }
 </style>
