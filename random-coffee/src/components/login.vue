@@ -1,8 +1,12 @@
 <template>
   <div class="login-wrap">
     <!-- <div class="newCompany"><a href="#">Register a company</a></div> -->
-    <div class="signIn text-hover-dark"><a href="#">Sign In</a></div>
-    <div class="signUp text-hover-dark"><a href="#">Sign Up</a></div>
+    <div class="signIn text-hover-dark">
+      <router-link to="/404">Sign In</router-link>
+    </div>
+    <div class="signUp text-hover-dark">
+      <router-link to="/404">Sign Up</router-link>
+    </div>
   </div>
 </template>
 
