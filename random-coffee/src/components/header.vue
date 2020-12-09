@@ -1,7 +1,7 @@
 <template>
   <div class="header-wrap">
     <div class="header-wrap__item social"><social /></div>
-     <div class="header-wrap__item logo"><logo /></div>
+     <div class="header-wrap__item logo">  <router-link to="/"><logo /></router-link></div>
     <div class="header-wrap__item login"><login /></div>
   </div>
 </template>

@@ -1,19 +1,21 @@
 import Vue from 'vue';
 import App from './App.vue';
 import VueParticlesBg from "particles-bg-vue";
- // Plugin cursor
- import CursorFx from '@luxdamore/vue-cursor-fx';
- import '@luxdamore/vue-cursor-fx/dist/CursorFx.css';
+// Plugin cursor
+import CursorFx from '@luxdamore/vue-cursor-fx';
+import '@luxdamore/vue-cursor-fx/dist/CursorFx.css';
+import router from './router'
 
- // Install cursor
- Vue.use(
-     CursorFx
- );
+// Install cursor
+Vue.use(
+    CursorFx
+);
 
 Vue.config.productionTip = false;
 Vue.use(VueParticlesBg);
 
 new Vue({
-  render: h => h(App),
+  router,
+  render: h => h(App)
 }).$mount('#app');
 

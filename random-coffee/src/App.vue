@@ -1,23 +1,29 @@
 <template>
   <div data-cursor-hover data-cursor-mix-blend-mode="difference" id="app">
-    <particles-bg type="cobweb" :bg="true"/>
-          <!-- <particles-bg type="custom" :config="config" :bg="true" /> -->
+    <particles-bg type="cobweb" :bg="true" />
+    <!-- <particles-bg type="custom" :config="config" :bg="true" /> -->
 
-    <cursor-fx data-cursor-hover
-        data-cursor-mix-blend-mode="difference" color-hover="#fff" color="#fff" />
-    <Home />
+    <cursor-fx
+      data-cursor-hover
+      data-cursor-mix-blend-mode="difference"
+      color-hover="#fff"
+      color="#fff"
+    />
+    <div class="container">
+      <headerV />
+      <router-view />
+    </div>
   </div>
 </template>
 
 <script>
-import Home from "./components/home-page";
 import { ParticlesBg } from "particles-bg-vue";
-
+import headerV from "@/components/header.vue";
 export default {
   name: "App",
   components: {
-    Home,
     ParticlesBg,
+    headerV,
   },
   data: function () {
     return {
