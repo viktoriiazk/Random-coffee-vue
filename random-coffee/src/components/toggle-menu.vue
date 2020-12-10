@@ -7,7 +7,7 @@
        <li>  <router-link to="/404">Contact</router-link></li>
       </ul>
     </div>
-       <div class="toggle-wrap" @click="toggleMenu" >
+       <div class="toggle-wrap" @click="toggleMenu" :class="{'toggle-on': isAddClass}">
       <span></span>
       <span></span>
       <span></span>
@@ -84,6 +84,22 @@ isAddClass: false
   }
 .toggleMenu{
  width: 400px;
+  }
+  .toggle-on {
+    span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 24px;
+    left: 11px;
+}
+span:nth-child(2) {
+    opacity: 0;
+}
+span:nth-child(3) {
+    width: 58px;
+    top: 24px;
+    left: 11px;
+    transform: rotate(-45deg);
+}
   }
 
  
