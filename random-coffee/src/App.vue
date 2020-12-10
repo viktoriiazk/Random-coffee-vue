@@ -1,6 +1,6 @@
 <template>
   <div data-cursor-hover data-cursor-mix-blend-mode="difference" id="app">
-    <particles-bg type="cobweb" :bg="true" />
+    <!-- <particles-bg type="cobweb" :bg="true" /> -->
     <!-- <particles-bg type="custom" :config="config" :bg="true" /> -->
 
     <cursor-fx
@@ -17,12 +17,12 @@
 </template>
 
 <script>
-import { ParticlesBg } from "particles-bg-vue";
+// import { ParticlesBg } from "particles-bg-vue";
 import headerV from "@/components/header.vue";
 export default {
   name: "App",
   components: {
-    ParticlesBg,
+    // ParticlesBg,
     headerV,
   },
   data: function () {

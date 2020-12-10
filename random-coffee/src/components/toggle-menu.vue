@@ -1,25 +1,35 @@
 <template>
-<div class="menu-wrap">
- <div class="toggle-wrap" @click="console">
-    <span></span>
-    <span></span>
-    <span></span>
+  <div class="menu-wrap">
+    <div class="menu-body" :class="{'toggleMenu': isAddClass}">
+      <ul>
+        <li> <router-link to="/404">About</router-link></li>
+       <li>  <router-link to="/404">Test</router-link></li>
+       <li>  <router-link to="/404">Contact</router-link></li>
+      </ul>
+    </div>
+       <div class="toggle-wrap" @click="toggleMenu" :class="{'toggle-on': isAddClass}">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </div>
-  <div class="menu-body">
-      gjhdsgfjdgj
-  </div>
-</div>
- 
 </template>
+
 <script>
 export default {
+  data() {
+    return {
+isAddClass: false
+    }
+  },
   methods: {
-    console: function () {
-      console.log("hello");
-    },
+       toggleMenu: function() {
+      !this.isAddClass ? this.isAddClass = true : this.isAddClass = false; 
+        }
   },
 };
 </script>
+
 <style lang="scss" scoped>
 @import "../styles/main.scss";
 .toggle-wrap {
@@ -54,5 +64,43 @@ export default {
     box-shadow: 0px 0px 20px 4px rgba(242, 201, 76, 1);
     transition: 0.3s;
   }
+  
 }
+.menu-body {
+    height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+    ul {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+.toggleMenu{
+ width: 400px;
+  }
+  .toggle-on {
+    span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 24px;
+    left: 11px;
+}
+span:nth-child(2) {
+    opacity: 0;
+}
+span:nth-child(3) {
+    width: 58px;
+    top: 24px;
+    left: 11px;
+    transform: rotate(-45deg);
+}
+  }
+
+ 
 </style>
