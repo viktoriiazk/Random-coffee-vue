@@ -1,5 +1,7 @@
 <template>
-  <div class="main-wrap">
+
+<div class="main-wrap">
+   <toggleMenu/>
     <div class="main">
       <h1 class="main__title">Random Coffee</h1>
       <p class="main__subtitle">
@@ -7,8 +9,8 @@
         at vehicula quis, lacinia id lorem. In hac.
       </p>
     </div>
-<toggleMenu/>
-  </div>
+     
+  </div>  
 </template>
 <script>
 import toggleMenu from '@/components/toggle-menu';
@@ -21,12 +23,16 @@ export default {
 <style lang="scss" scoped>
 @import "../styles/main.scss";
 .main-wrap {
-  @include flex-center-center;
-  transform: translate(0, 50%);
+  // @include flex-center-center;
+  transition: margin-left .5s;
+  padding: 20px;
+
   .main {
     text-align: center;
     max-width: 780px;
     width: 100%;
+    margin: 0 auto;
+    transform: translate(0, 50%);
     &__title {
       color: $lightTextColor;
       font-size: 4.37rem;
