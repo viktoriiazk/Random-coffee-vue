@@ -3,12 +3,11 @@
     <!-- <particles-bg type="cobweb" :bg="true" /> -->
     <!-- <particles-bg type="custom" :config="config" :bg="true" /> -->
 
-    <cursor-fx
+    <!-- <cursor-fx
       data-cursor-hover
-      data-cursor-mix-blend-mode="difference"
       color-hover="#fff"
       color="#fff"
-    />
+    /> -->
     <div class="container">
       <headerV />
       <router-view />
@@ -54,7 +53,7 @@ export default {
           ctx.closePath();
         },
       },
-    };
+    }
   },
 };
 </script>
@@ -70,5 +69,6 @@ export default {
   z-index: 0;
   background-color: $bgDark;
   min-height: 100vh;
+  cursor: auto;
 }
 </style>
