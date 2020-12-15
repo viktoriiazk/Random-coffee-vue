@@ -10,6 +10,8 @@
     /> -->
     <div class="container">
       <headerV />
+
+      <p v-text="messages"></p>
       <router-view />
     </div>
   </div>
@@ -17,6 +19,7 @@
 
 <script>
 // import { ParticlesBg } from "particles-bg-vue";
+import axios from "axios";
 import headerV from "@/components/header.vue";
 export default {
   name: "App",
@@ -53,7 +56,11 @@ export default {
           ctx.closePath();
         },
       },
-    }
+      messages: ["test", "from", "frontend"],
+    };
+  },
+  async created() {
+    this.messages = (await axios.get("http://localhost:3000/messages")).data;
   },
 };
 </script>
