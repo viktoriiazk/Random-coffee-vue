@@ -8,10 +8,9 @@
       color-hover="#fff"
       color="#fff"
     /> -->
+
     <div class="container">
       <headerV />
-
-      <p v-text="messages"></p>
       <router-view />
     </div>
   </div>
@@ -36,7 +35,6 @@ export default {
         life: [4.5, 1],
         v: [3, 1],
         tha: [-140, 140],
-        // body: "./img/icon.png", // Whether to render pictures
         rotate: [20, 20],
         alpha: [6, 5],
         scale: [2.5, 0.5],
@@ -56,11 +54,15 @@ export default {
           ctx.closePath();
         },
       },
-      messages: ["test", "from", "frontend"],
+     
     };
   },
   async created() {
-    this.messages = (await axios.get("http://localhost:3000/messages")).data;
+
+    this.messages = await axios.get("http://localhost:3000/messages").data;
+      this.$root.$on("newUser", message => {
+  this.messages.push(message)
+  });
   },
 };
 </script>
@@ -77,5 +79,6 @@ export default {
   background-color: $bgDark;
   min-height: 100vh;
   cursor: auto;
+
 }
 </style>

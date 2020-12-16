@@ -1,32 +1,49 @@
 <template>
-
-<div class="main-wrap">
-   <toggleMenu/>
+  <div class="main-wrap">
+    <loginForm />
+    <toggleMenu />
     <div class="main">
       <h1 class="main__title">Random Coffee</h1>
       <p class="main__subtitle">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin felis est, viverra
         at vehicula quis, lacinia id lorem. In hac.
       </p>
+      <p v-text="message">rrr</p>
     </div>
-     
-  </div>  
+  </div>
 </template>
 <script>
-import toggleMenu from '@/components/toggle-menu';
+import toggleMenu from "@/components/toggle-menu";
+import loginForm from "@/components/loginForm.vue";
+import axios from "axios";
 export default {
-    components: {
-        toggleMenu,
+  data(){
+    return {
+       messages: []
     }
+  },
+  components: {
+    toggleMenu,
+    loginForm,
+  },
+  async created() {
+      this.$root.$on("newUser", message => {
+  this.messages.push(message);
+  }
+  );
+    this.message = (await axios.get("http://localhost:3000/messages")).data;
+
+  },
 };
 </script>
 <style lang="scss" scoped>
 @import "../styles/main.scss";
 .main-wrap {
   // @include flex-center-center;
-  transition: margin-left .5s;
+  transition: margin-left 0.5s;
   padding: 20px;
 
+  position: relative;
   .main {
     text-align: center;
     max-width: 780px;
