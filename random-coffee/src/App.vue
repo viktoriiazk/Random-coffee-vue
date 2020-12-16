@@ -54,10 +54,15 @@ export default {
           ctx.closePath();
         },
       },
+     
     };
   },
   async created() {
-    this.messages = (await axios.get("http://localhost:3000/messages")).data;
+
+    this.messages = await axios.get("http://localhost:3000/messages").data;
+      this.$root.$on("newUser", message => {
+  this.messages.push(message)
+  });
   },
 };
 </script>
@@ -74,5 +79,6 @@ export default {
   background-color: $bgDark;
   min-height: 100vh;
   cursor: auto;
+
 }
 </style>

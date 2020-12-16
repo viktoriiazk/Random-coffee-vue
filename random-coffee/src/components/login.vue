@@ -8,50 +8,74 @@
       <button>Sign Up</button>
     </div>
 
-     <div class="login-popup-wrap" v-if="modal">
-    <div class="overlay"></div>
-    <div class="login-popup" >
-      <h2>Login</h2>
-      <div class="login-form">
-        <form action="#" method="post">
-          <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required />
+    <div class="login-popup-wrap" v-if="modal">
+      <div class="overlay"></div>
+      <div class="login-popup">
+        <h2>Login</h2>
+        <div class="login-form">
+          <form action="#" method="post">
+            <label for="uname"><b>Username</b></label>
+            <input
+              v-model="userName"
+              type="text"
+              placeholder="Enter Username"
+              name="uname"
+              required
+            />
 
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required />
+            <label for="psw"><b>Password</b></label>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              name="psw"
+              required
+            />
 
-          <button type="submit">Login</button>
-          <label>
-            <input type="checkbox" checked="checked" name="remember" /> Remember me
-          </label>
-          <button @click="toggleModal()">close</button>
-        </form>
+            <button type="submit" @click="submit">Login</button>
+            <label>
+              <input type="checkbox" checked="checked" name="remember" />
+              Remember me
+            </label>
+            <button @click="toggleModal()">close</button>
+          </form>
 
-        <a href="#">Sign up</a>
-        <a href="#">Forgot password?</a>
+          <a href="#">Sign up</a>
+          <a href="#">Forgot password?</a>
+        </div>
       </div>
     </div>
-  </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   components: {},
   data() {
-    return { modal: false };
+    return { modal: false, userName: "" };
   },
   methods: {
     toggleModal() {
-      if(this.modal == false){
-         this.modal = true
+      if (this.modal == false) {
+        this.modal = true;
       } else {
-         this.modal = false
+        this.modal = false;
+      }
+    },
+    async submit() {
+   
+      try {
+        let msg = (await axios.post("http://localhost:3000/messages", {
+          message: this.userName
+        })).data;
+   
+        this.$root.$emit("newUser", msg.message);
+      } catch (error) {
+        console.error(error);
+      }
+    }
   }
-  }
-
-}
-}
+};
 </script>
 
 <style lang="scss" scoped>
