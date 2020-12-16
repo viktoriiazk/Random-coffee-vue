@@ -1,16 +1,7 @@
 <template>
-  <div class="login-wrap">
-    <div class="signIn text-hover-dark">
-      <button @click="toggleModal()">Sign In</button>
-    </div>
-
-    <div class="signUp text-hover-dark">
-      <button>Sign Up</button>
-    </div>
-
-     <div class="login-popup-wrap" v-if="modal">
+  <div class="login-popup-wrap">
     <div class="overlay"></div>
-    <div class="login-popup" >
+    <div class="login-popup" v-if="modal">
       <h2>Login</h2>
       <div class="login-form">
         <form action="#" method="post">
@@ -24,7 +15,7 @@
           <label>
             <input type="checkbox" checked="checked" name="remember" /> Remember me
           </label>
-          <button @click="toggleModal()">close</button>
+          <button @click="modal = !modal">close</button>
         </form>
 
         <a href="#">Sign up</a>
@@ -32,42 +23,13 @@
       </div>
     </div>
   </div>
-  </div>
 </template>
 
 <script>
-export default {
-  components: {},
-  data() {
-    return { modal: false };
-  },
-  methods: {
-    toggleModal() {
-      if(this.modal == false){
-         this.modal = true
-      } else {
-         this.modal = false
-  }
-  }
-
-}
-}
+export default {};
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/main.scss";
-.login-wrap {
-  @include flex-sb-center;
-  width: 120px;
-  .text-hover-dark {
-    @include hover-text-ligth;
-  }
-  a {
-    color: $lightTextColor;
-    font-family: $fontMain;
-  }
-}
-
 .login-popup {
   background-color: red;
   position: fixed;
@@ -89,7 +51,7 @@ export default {
 }
 .overlay {
   position: fixed;
-  z-index: 5;
+  z-index: -1;
   top: 0;
   left: 0;
   width: 100%;

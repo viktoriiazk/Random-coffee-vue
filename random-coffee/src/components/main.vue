@@ -1,7 +1,7 @@
 <template>
-
-<div class="main-wrap">
-   <toggleMenu/>
+  <div class="main-wrap">
+    <loginForm />
+    <toggleMenu />
     <div class="main">
       <h1 class="main__title">Random Coffee</h1>
       <p class="main__subtitle">
@@ -9,24 +9,26 @@
         at vehicula quis, lacinia id lorem. In hac.
       </p>
     </div>
-     
-  </div>  
+  </div>
 </template>
 <script>
-import toggleMenu from '@/components/toggle-menu';
+import toggleMenu from "@/components/toggle-menu";
+import loginForm from "@/components/loginForm.vue";
 export default {
-    components: {
-        toggleMenu,
-    }
+  components: {
+    toggleMenu,
+    loginForm,
+  },
 };
 </script>
 <style lang="scss" scoped>
 @import "../styles/main.scss";
 .main-wrap {
   // @include flex-center-center;
-  transition: margin-left .5s;
+  transition: margin-left 0.5s;
   padding: 20px;
 
+  position: relative;
   .main {
     text-align: center;
     max-width: 780px;
