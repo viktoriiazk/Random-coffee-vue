@@ -20,15 +20,19 @@ new Vue({
 }).$mount('#app');
 
 
-console.log(`%c ________________________________________
-<  Thanks for visiting my project  >
-<   viktoriia.zakorchemna@gmail.com   >
- ----------------------------------------
+console.log(`%c 
+__________________________________
+
+  Thanks for visiting my project
+    
+  viktoriia.zakorchemna@gmail.com   
+__________________________________
+
         \\   ^__^
          \\  (oo)\\_______
             (__)\\       )\\/\\
                 ||----- |
-                ||     ||`, "color: 	orchid; font-size: 16px;");
+                ||     ||`, "color: orchid; font-size: 16px;");
 
 
 
