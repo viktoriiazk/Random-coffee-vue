@@ -19,3 +19,16 @@ new Vue({
   render: h => h(App)
 }).$mount('#app');
 
+
+console.log(`%c ________________________________________
+<  Thanks for visiting my project  >
+<   viktoriia.zakorchemna@gmail.com   >
+ ----------------------------------------
+        \\   ^__^
+         \\  (oo)\\_______
+            (__)\\       )\\/\\
+                ||----- |
+                ||     ||`, "color: 	orchid; font-size: 16px;");
+
+
+
