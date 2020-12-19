@@ -11,32 +11,47 @@
     <div class="login-popup-wrap" v-if="modal">
       <div class="overlay"></div>
       <div class="login-popup">
-        <h2>Login</h2>
+        <button @click="toggleModal()" class="login-popup__close">
+          <span></span>
+          <span></span>
+        </button>
+        <router-link to="/">
+          <img src="@/assets/Logo.svg" alt="Random Coffee logo"
+        /></router-link>
         <div class="login-form">
           <form action="#" method="post">
-            <label for="uname"><b>Username</b></label>
-            <input
-              v-model="userName"
-              type="text"
-              placeholder="Enter Username"
-              name="uname"
-              required
-            />
+            <fieldset>
+              <label for="uemail"></label>
+              <input
+                v-model="userName"
+                type="text"
+                placeholder="Email"
+                name="uemail"
+                required
+              />
+            </fieldset>
 
-            <label for="psw"><b>Password</b></label>
-            <input
-              type="password"
-              placeholder="Enter Password"
-              name="psw"
-              required
-            />
+            <fieldset>
+              <label for="psw"></label>
+              <input
+                type="password"
+                placeholder="Password"
+                name="psw"
+                required
+              />
+            </fieldset>
 
-            <button type="submit" @click="submit">Login</button>
             <label>
-              <input type="checkbox" checked="checked" name="remember" />
+              <input
+                type="checkbox"
+                checked="checked"
+                name="remember"
+                class="rememberMe"
+              />
               Remember me
             </label>
-            <button @click="toggleModal()">close</button>
+
+            <button type="submit" @click="submit">Login</button>
           </form>
 
           <a href="#">Sign up</a>
@@ -63,18 +78,19 @@ export default {
       }
     },
     async submit() {
-   
       try {
-        let msg = (await axios.post("http://localhost:3000/messages", {
-          message: this.userName
-        })).data;
-   
+        let msg = (
+          await axios.post("http://localhost:3000/messages", {
+            message: this.userName,
+          })
+        ).data;
+
         this.$root.$emit("newUser", msg.message);
       } catch (error) {
         console.error(error);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -90,25 +106,79 @@ export default {
     color: $lightTextColor;
     font-family: $fontMain;
   }
+  button {
+    color: $lightTextColor;
+  }
 }
 
 .login-popup {
-  background-color: red;
+  background-color: $bgSecondary;
   position: fixed;
   z-index: 10;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
+  border-radius: 1.4rem;
+  max-width: 400px;
+  width: 100%;
+  fieldset {
+    display: flex;
+    justify-content: center;
+  }
   /* Full-width input fields */
   input[type="text"],
   input[type="password"] {
+    max-width: 270px;
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: none;
+    border-bottom: 1px solid $lightTextColor;
     box-sizing: border-box;
+    background-color: $transparent;
+    &::placeholder {
+      color: $lightTextColor;
+    }
+  }
+  input {
+    .rememberMe {
+      color: red;
+    }
+  }
+  img {
+    display: block;
+    margin: 20px auto;
+    width: 60px;
+    height: auto;
+  }
+  &__close {
+
+    height: 20px;
+    width: 30px;
+    position: relative;
+    display: block;
+  margin-left: auto;
+  top: 20px;
+&:hover {
+  transform: scale(1.3);
+}
+    span:first-child {
+      transform: rotate(45deg);
+      top: 0px;
+    }
+    span:nth-child(2) {
+      transform: rotate(-45deg);
+      top: 0px;
+    }
+    span {
+      display: block;
+      position: absolute;
+      width: 20px;
+      height: 1px;
+      background-color: $lightTextColor;
+    }
+ 
   }
 }
 .overlay {
