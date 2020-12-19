@@ -2,7 +2,7 @@
   <div class="login-popup-wrap">
     <div class="overlay"></div>
     <div class="login-popup" v-if="modal">
-      <h2>Login</h2>
+      <h2>Loginuuuu</h2>
       <div class="login-form">
         <form action="#" method="post">
           <label for="uname"><b>Username</b></label>
@@ -41,8 +41,9 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+@import "../styles/main.scss";
 .login-popup {
-  background-color: red;
+  background-color: $bgSecondary;
   position: fixed;
   z-index: 10;
   top: 50%;
