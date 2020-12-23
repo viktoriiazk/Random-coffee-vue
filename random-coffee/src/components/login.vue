@@ -26,7 +26,7 @@
                 v-model="userName"
                 type="text"
                 placeholder="Email"
-                name="uemail"
+                name="uemail" contenteditable
                 required
               />
             </fieldset>
@@ -36,7 +36,7 @@
               <input
                 type="password"
                 placeholder="Password"
-                name="psw"
+                name="psw" contenteditable
                 required
               />
             </fieldset>
@@ -46,12 +46,14 @@
                 type="checkbox"
                 checked="checked"
                 name="remember"
-                class="rememberMe"
+                class="rememberMe" 
               />
               Remember me
             </label>
 
-            <button type="submit" @click="submit">Login</button>
+            <button type="submit" @click="submit" class="login-form__btn">
+              Login
+            </button>
           </form>
 
           <a href="#">Sign up</a>
@@ -137,8 +139,13 @@ export default {
     border-bottom: 1px solid $lightTextColor;
     box-sizing: border-box;
     background-color: $transparent;
+    caret-color: $mineShaft;
+    color: $lightTextColor;
     &::placeholder {
       color: $lightTextColor;
+    }
+    &:focus, textarea:focus {
+    color: $lightTextColor;
     }
   }
   input {
@@ -153,16 +160,15 @@ export default {
     height: auto;
   }
   &__close {
-
     height: 20px;
     width: 30px;
     position: relative;
     display: block;
-  margin-left: auto;
-  top: 20px;
-&:hover {
-  transform: scale(1.3);
-}
+    margin-left: auto;
+    top: 20px;
+    &:hover {
+      transform: scale(1.3);
+    }
     span:first-child {
       transform: rotate(45deg);
       top: 0px;
@@ -178,7 +184,18 @@ export default {
       height: 1px;
       background-color: $lightTextColor;
     }
- 
+  }
+  .login-form {
+    &__btn {
+      @include btn(transparent, $lightTextColor);
+      margin: 0 auto;
+      max-width: 270px;
+      width: 100%;
+      &:hover {
+        background-color: $lightTextColor;
+        color: $darkTextColor;
+      }
+    }
   }
 }
 .overlay {
