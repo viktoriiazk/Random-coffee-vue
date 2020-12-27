@@ -209,6 +209,9 @@ export default {
       margin: 0 auto;
 
     }
+    .login-has-social {
+      text-align: center;
+    }
   }
 }
 .overlay {
