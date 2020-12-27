@@ -1,11 +1,11 @@
 <template>
   <div class="login-wrap">
     <div class="signIn text-hover-dark">
-      <button @click="toggleModal()">Sign In</button>
+      <button @click="[toggleModal(), (loginForm = true)]">Sign In</button>
     </div>
 
     <div class="signUp text-hover-dark">
-      <button>Sign Up</button>
+      <button @click="[toggleModal(), (loginForm = false)]">Sign Up</button>
     </div>
 
     <div class="login-popup-wrap" v-if="modal">
@@ -18,7 +18,9 @@
         <router-link to="/">
           <img src="@/assets/Logo.svg" alt="Random Coffee logo"
         /></router-link>
-        <div class="login-form">
+
+        <div class="login-form" v-if="loginForm">
+          login
           <form action="#" method="post">
             <fieldset>
               <label for="uemail"></label>
@@ -55,12 +57,85 @@
             <a href="#">Forgot password?</a>
           </div>
           <div class="login-has-social">
+          <!-- Task: Should do redirect to sign up form-->
             <button type="submit" class="login-form__btn">Sign up</button>
             <p>or continue with</p>
-            <button type="submit" >
-            <img src="@/assets/social/facebook.svg" alt="Facebook logo" class="social-logo" />
+            <button type="submit">
+              <img
+                src="@/assets/social/facebook.svg"
+                alt="Facebook logo"
+                class="social-logo social-logo-login"
+              />
             </button>
           </div>
+        </div>
+        <div class="login-form" v-else>
+          <form action="#" method="post">
+            <fieldset>
+              <label for="uname"></label>
+              <input
+                v-model="userName"
+                type="text"
+                placeholder="Name"
+                name="uname"
+                contenteditable
+                required
+              />
+            </fieldset>
+            <fieldset>
+              <label for="uemail"></label>
+              <input
+                v-model="userName"
+                type="text"
+                placeholder="Email"
+                name="uemail"
+                contenteditable
+                required
+              />
+            </fieldset>
+
+            <fieldset>
+              <label for="psw"></label>
+              <input
+                type="password"
+                placeholder="Password"
+                name="psw"
+                contenteditable
+                required
+              />
+            </fieldset>
+            <fieldset>
+              <label for="cpsw"></label>
+              <input
+                type="password"
+                placeholder="Confirm password"
+                name="cpsw"
+                contenteditable
+                required
+              />
+            </fieldset>
+
+            <button type="submit" @click="submit" class="login-form__btn">
+              Create an account
+            </button>
+
+            <div class="login-has-social">
+              <p>or Sign up using</p>
+              <button type="submit">
+                <img
+                  src="@/assets/social/facebook.svg"
+                  alt="Facebook logo"
+                  class="social-logo social-logo-login"
+                />
+              </button>
+            </div>
+            <p class="login-have-account">
+              Already have an account?
+<!-- Task: Should do redirect to sign in form-->
+
+              <a href="#" @click="loginForm = true">Sign in</a>
+            </p>
+          </form>
         </div>
       </div>
     </div>
@@ -81,6 +156,9 @@ export default {
       } else {
         this.modal = false;
       }
+    },
+    test() {
+      return console.log("test");
     },
     async submit() {
       try {
@@ -207,11 +285,16 @@ export default {
       justify-content: space-between;
       max-width: 270px;
       margin: 0 auto;
-
     }
     .login-has-social {
       text-align: center;
+      .social-logo-login {
+        width: 30px;
+      }
     }
+  }
+  .login-have-account {
+    padding: 1rem 0;
   }
 }
 .overlay {

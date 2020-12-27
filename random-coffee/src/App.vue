@@ -9,8 +9,6 @@
        color="#fff"
      /> -->
     <div class="container">
-    <button @click="fb" type="button" style="background:red">click</button>
-
       <headerV />
       <router-view />
     </div>
