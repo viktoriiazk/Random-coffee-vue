@@ -26,7 +26,8 @@
                 v-model="userName"
                 type="text"
                 placeholder="Email"
-                name="uemail" contenteditable
+                name="uemail"
+                contenteditable
                 required
               />
             </fieldset>
@@ -36,28 +37,30 @@
               <input
                 type="password"
                 placeholder="Password"
-                name="psw" contenteditable
+                name="psw"
+                contenteditable
                 required
               />
             </fieldset>
-
-            <label>
-              <input
-                type="checkbox"
-                checked="checked"
-                name="remember"
-                class="rememberMe" 
-              />
-              Remember me
-            </label>
 
             <button type="submit" @click="submit" class="login-form__btn">
               Login
             </button>
           </form>
-
-          <a href="#">Sign up</a>
-          <a href="#">Forgot password?</a>
+          <div class="login-helper">
+            <label>
+              <input type="checkbox" checked="checked" name="remember" />
+              Remember me
+            </label>
+            <a href="#">Forgot password?</a>
+          </div>
+          <div class="login-has-social">
+            <button type="submit" class="login-form__btn">Sign up</button>
+            <p>or continue with</p>
+            <button type="submit" >
+            <img src="@/assets/social/facebook.svg" alt="Facebook logo" class="social-logo" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -144,8 +147,9 @@ export default {
     &::placeholder {
       color: $lightTextColor;
     }
-    &:focus, textarea:focus {
-    color: $lightTextColor;
+    &:focus,
+    textarea:focus {
+      color: $lightTextColor;
     }
   }
   input {
@@ -186,15 +190,24 @@ export default {
     }
   }
   .login-form {
+    max-width: 270px;
+    margin: 0 auto;
     &__btn {
       @include btn(transparent, $lightTextColor);
-      margin: 0 auto;
+      margin: 1rem auto;
       max-width: 270px;
       width: 100%;
       &:hover {
         background-color: $lightTextColor;
         color: $darkTextColor;
       }
+    }
+    .login-helper {
+      display: flex;
+      justify-content: space-between;
+      max-width: 270px;
+      margin: 0 auto;
+
     }
   }
 }
