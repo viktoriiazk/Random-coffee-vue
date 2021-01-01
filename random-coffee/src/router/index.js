@@ -1,7 +1,8 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import page404 from '@/views/404.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '../views/Home.vue';
+import page404 from '@/views/404.vue';
+import Welcome from '@/views/Welcome.vue';
 
 Vue.use(VueRouter)
 
@@ -23,11 +24,18 @@ const routes = [
     path: '/404',
     name: '404',
     component: page404
-  }
-]
+  },
+  {
+    path: '/welcome',
+    name: 'Welcome',
+    component: Welcome
+
+  },
+];
 
 const router = new VueRouter({
+  mode: 'history',
   routes
-})
+});
 
 export default router;
