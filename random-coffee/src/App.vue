@@ -17,7 +17,6 @@
 
 <script>
 import { ParticlesBg } from "particles-bg-vue";
-import axios from "axios";
 import headerV from "@/components/header.vue";
 import  config from "@/config.js";
 export default {
@@ -57,13 +56,7 @@ export default {
      
     };
   },
-  async created() {
 
-    this.messages = await axios.get("http://localhost:3000/messages").data;
-      this.$root.$on("newUser", message => {
-  this.messages.push(message)
-  });
-  },
   methods :  {
     fb: function greet() {
       return console.log('this is ' + config.facebookAuth);

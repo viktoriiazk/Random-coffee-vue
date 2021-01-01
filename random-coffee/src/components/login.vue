@@ -1,7 +1,9 @@
 <template>
   <div class="login-wrap">
     <div class="signIn text-hover-dark">
-      <button @click="[toggleModal(), (loginForm = true)]">Sign In</button>
+
+          <button @click="[toggleModal(), (loginForm = true)]">Sign In</button>
+
     </div>
 
     <div class="signUp text-hover-dark">
@@ -20,12 +22,12 @@
         /></router-link>
 
         <div class="login-form" v-if="loginForm">
-          login
-          <form action="#" method="post">
+
+          <form action="#" method="post" @submit="signin">
             <fieldset>
               <label for="uemail"></label>
               <input
-                v-model="userName"
+                v-model="userEmail"
                 type="text"
                 placeholder="Email"
                 name="uemail"
@@ -37,6 +39,7 @@
             <fieldset>
               <label for="psw"></label>
               <input
+              v-model="userPass"
                 type="password"
                 placeholder="Password"
                 name="psw"
@@ -70,11 +73,11 @@
           </div>
         </div>
         <div class="login-form" v-else>
-          <form action="#" method="post">
+          <form action="#" method="post" @submit="signup">
             <fieldset>
               <label for="uname"></label>
               <input
-                v-model="userName"
+                v-model="nUserName"
                 type="text"
                 placeholder="Name"
                 name="uname"
@@ -85,7 +88,7 @@
             <fieldset>
               <label for="uemail"></label>
               <input
-                v-model="userName"
+                v-model="nUserEmail"
                 type="text"
                 placeholder="Email"
                 name="uemail"
@@ -97,6 +100,7 @@
             <fieldset>
               <label for="psw"></label>
               <input
+              v-model="nUserPass"
                 type="password"
                 placeholder="Password"
                 name="psw"
@@ -107,6 +111,7 @@
             <fieldset>
               <label for="cpsw"></label>
               <input
+              v-model="nUserCpass"
                 type="password"
                 placeholder="Confirm password"
                 name="cpsw"
@@ -143,14 +148,23 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
+import { mapMutations } from 'vuex';
 export default {
   components: {},
   data() {
-    return { modal: false, userName: "" };
+    return { modal: false, 
+            userEmail: "",
+            userPass: "",
+            nUserName: "", 
+            nUserEmail: "",
+            nUserPass: "",
+            nUserCpass: "",
+             };
   },
   methods: {
-    toggleModal() {
+    ...mapMutations(['setUser', 'setToken'])
+,    toggleModal() {
       if (this.modal == false) {
         this.modal = true;
       } else {
@@ -160,19 +174,29 @@ export default {
     test() {
       return console.log("test");
     },
-    async submit() {
-      try {
-        let msg = (
-          await axios.post("http://localhost:3000/messages", {
-            message: this.userName,
-          })
-        ).data;
+async signin(e) {
+  e.preventDefault();
 
-        this.$root.$emit("newUser", msg.message);
-      } catch (error) {
-        console.error(error);
-      }
-    },
+  const response = await  fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", 
+      },
+      body: JSON.stringify({
+        userEmail: this.userEmail,
+        userPassword: this.userPass,
+      }),
+    });
+
+ const { user, token } = await response.json();
+  console.log(user, token);
+
+  this.setUser(user);
+  this.setToken(token);
+  this.$router.push("/welcome");
+
+},
+
   },
 };
 </script>
