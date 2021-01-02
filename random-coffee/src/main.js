@@ -45,6 +45,7 @@ new Vue({
 
 
 
+
 console.log(`%c ________________________________________
 <  Thanks for visiting my project  >
 <   viktoriia.zakorchemna@gmail.com   >
