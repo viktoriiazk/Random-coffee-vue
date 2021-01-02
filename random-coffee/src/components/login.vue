@@ -13,6 +13,7 @@
     <div class="login-popup-wrap" v-if="modal">
       <div class="overlay"></div>
       <div class="login-popup">
+      <!--  close btn don't work if add some data in the input field -->
         <button @click="toggleModal()" class="login-popup__close">
           <span></span>
           <span></span>
@@ -120,7 +121,7 @@
               />
             </fieldset>
 
-            <button type="submit" @click="submit" class="login-form__btn">
+            <button type="submit" class="login-form__btn">
               Create an account
             </button>
 
