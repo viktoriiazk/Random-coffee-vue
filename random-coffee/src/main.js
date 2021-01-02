@@ -44,7 +44,6 @@ new Vue({
 }).$mount('#app');
 
 
-
 console.log(`%c ________________________________________
 <  Thanks for visiting my project  >
 <   viktoriia.zakorchemna@gmail.com   >
@@ -57,9 +56,4 @@ console.log(`%c ________________________________________
      *o****o*o*
          ||
            `, "color: 	orchid; font-size: 16px;");
-
-
-
-
-
 
