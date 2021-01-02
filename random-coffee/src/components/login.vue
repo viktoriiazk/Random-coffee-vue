@@ -1,11 +1,13 @@
 <template>
   <div class="login-wrap">
     <div class="signIn text-hover-dark">
-      <button @click="toggleModal()">Sign In</button>
+
+          <button @click="[toggleModal(), (loginForm = true)]">Sign In</button>
+
     </div>
 
     <div class="signUp text-hover-dark">
-      <button>Sign Up</button>
+      <button @click="[toggleModal(), (loginForm = false)]">Sign Up</button>
     </div>
 
     <div class="login-popup-wrap" v-if="modal">
@@ -18,15 +20,18 @@
         <router-link to="/">
           <img src="@/assets/Logo.svg" alt="Random Coffee logo"
         /></router-link>
-        <div class="login-form">
-          <form action="#" method="post">
+
+        <div class="login-form" v-if="loginForm">
+
+          <form action="#" method="post" @submit="signin">
             <fieldset>
               <label for="uemail"></label>
               <input
-                v-model="userName"
+                v-model="userEmail"
                 type="text"
                 placeholder="Email"
                 name="uemail"
+                contenteditable
                 required
               />
             </fieldset>
@@ -34,28 +39,108 @@
             <fieldset>
               <label for="psw"></label>
               <input
+              v-model="userPass"
                 type="password"
                 placeholder="Password"
                 name="psw"
+                contenteditable
                 required
               />
             </fieldset>
 
+            <button type="submit" @click="submit" class="login-form__btn">
+              Login
+            </button>
+          </form>
+          <div class="login-helper">
             <label>
-              <input
-                type="checkbox"
-                checked="checked"
-                name="remember"
-                class="rememberMe"
-              />
+              <input type="checkbox" checked="checked" name="remember" />
               Remember me
             </label>
+            <a href="#">Forgot password?</a>
+          </div>
+          <div class="login-has-social">
+          <!-- Task: Should do redirect to sign up form-->
+            <button type="submit" class="login-form__btn">Sign up</button>
+            <p>or continue with</p>
+            <button type="submit">
+              <img
+                src="@/assets/social/facebook.svg"
+                alt="Facebook logo"
+                class="social-logo social-logo-login"
+              />
+            </button>
+          </div>
+        </div>
+        <div class="login-form" v-else>
+          <form action="#" method="post" @submit="signup">
+            <fieldset>
+              <label for="uname"></label>
+              <input
+                v-model="nUserName"
+                type="text"
+                placeholder="Name"
+                name="uname"
+                contenteditable
+                required
+              />
+            </fieldset>
+            <fieldset>
+              <label for="uemail"></label>
+              <input
+                v-model="nUserEmail"
+                type="text"
+                placeholder="Email"
+                name="uemail"
+                contenteditable
+                required
+              />
+            </fieldset>
 
-            <button type="submit" @click="submit">Login</button>
+            <fieldset>
+              <label for="psw"></label>
+              <input
+              v-model="nUserPass"
+                type="password"
+                placeholder="Password"
+                name="psw"
+                contenteditable
+                required
+              />
+            </fieldset>
+            <fieldset>
+              <label for="cpsw"></label>
+              <input
+              v-model="nUserCpass"
+                type="password"
+                placeholder="Confirm password"
+                name="cpsw"
+                contenteditable
+                required
+              />
+            </fieldset>
+
+            <button type="submit" @click="submit" class="login-form__btn">
+              Create an account
+            </button>
+
+            <div class="login-has-social">
+              <p>or Sign up using</p>
+              <button type="submit">
+                <img
+                  src="@/assets/social/facebook.svg"
+                  alt="Facebook logo"
+                  class="social-logo social-logo-login"
+                />
+              </button>
+            </div>
+            <p class="login-have-account">
+              Already have an account?
+<!-- Task: Should do redirect to sign in form-->
+
+              <a href="#" @click="loginForm = true">Sign in</a>
+            </p>
           </form>
-
-          <a href="#">Sign up</a>
-          <a href="#">Forgot password?</a>
         </div>
       </div>
     </div>
@@ -63,33 +148,55 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
+import { mapMutations } from 'vuex';
 export default {
   components: {},
   data() {
-    return { modal: false, userName: "" };
+    return { modal: false, 
+            userEmail: "",
+            userPass: "",
+            nUserName: "", 
+            nUserEmail: "",
+            nUserPass: "",
+            nUserCpass: "",
+             };
   },
   methods: {
-    toggleModal() {
+    ...mapMutations(['setUser', 'setToken'])
+,    toggleModal() {
       if (this.modal == false) {
         this.modal = true;
       } else {
         this.modal = false;
       }
     },
-    async submit() {
-      try {
-        let msg = (
-          await axios.post("http://localhost:3000/messages", {
-            message: this.userName,
-          })
-        ).data;
-
-        this.$root.$emit("newUser", msg.message);
-      } catch (error) {
-        console.error(error);
-      }
+    test() {
+      return console.log("test");
     },
+async signin(e) {
+  e.preventDefault();
+
+  const response = await  fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", 
+      },
+      body: JSON.stringify({
+        userEmail: this.userEmail,
+        userPassword: this.userPass,
+      }),
+    });
+
+ const { user, token } = await response.json();
+  console.log(user, token);
+
+  this.setUser(user);
+  this.setToken(token);
+  this.$router.push("/welcome");
+
+},
+
   },
 };
 </script>
@@ -137,7 +244,13 @@ export default {
     border-bottom: 1px solid $lightTextColor;
     box-sizing: border-box;
     background-color: $transparent;
+    caret-color: $mineShaft;
+    color: $lightTextColor;
     &::placeholder {
+      color: $lightTextColor;
+    }
+    &:focus,
+    textarea:focus {
       color: $lightTextColor;
     }
   }
@@ -153,16 +266,15 @@ export default {
     height: auto;
   }
   &__close {
-
     height: 20px;
     width: 30px;
     position: relative;
     display: block;
-  margin-left: auto;
-  top: 20px;
-&:hover {
-  transform: scale(1.3);
-}
+    margin-left: auto;
+    top: 20px;
+    &:hover {
+      transform: scale(1.3);
+    }
     span:first-child {
       transform: rotate(45deg);
       top: 0px;
@@ -178,7 +290,35 @@ export default {
       height: 1px;
       background-color: $lightTextColor;
     }
- 
+  }
+  .login-form {
+    max-width: 270px;
+    margin: 0 auto;
+    &__btn {
+      @include btn(transparent, $lightTextColor);
+      margin: 1rem auto;
+      max-width: 270px;
+      width: 100%;
+      &:hover {
+        background-color: $lightTextColor;
+        color: $darkTextColor;
+      }
+    }
+    .login-helper {
+      display: flex;
+      justify-content: space-between;
+      max-width: 270px;
+      margin: 0 auto;
+    }
+    .login-has-social {
+      text-align: center;
+      .social-logo-login {
+        width: 30px;
+      }
+    }
+  }
+  .login-have-account {
+    padding: 1rem 0;
   }
 }
 .overlay {

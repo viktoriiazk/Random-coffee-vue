@@ -13,6 +13,8 @@ export default {
   components: { logo, social, login },
   name: "header-block",
 };
+
+
 </script>
 <style lang="scss" scoped>
 @import "../styles/main.scss";

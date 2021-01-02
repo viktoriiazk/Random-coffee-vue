@@ -22,15 +22,19 @@
           />
 
           <button type="submit">Login</button>
-          <label>
+         
+          <button @click="modal = !modal">close</button>
+        </form>
+<div class="login-helper">
+ <label>
             <input type="checkbox" checked="checked" name="remember" /> Remember
             me
           </label>
-          <button @click="modal = !modal">close</button>
-        </form>
-
         <a href="#">Sign up</a>
         <a href="#">Forgot password?</a>
+</div>
+<div class="login-has-social"></div>
+
       </div>
     </div>
   </div>

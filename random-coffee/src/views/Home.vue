@@ -1,16 +1,18 @@
 <template>
   <div class="home-wrap">
-    <mainBlock />
+  
+    <mainContent/>
+
   </div>
 </template>
 
 <script>
-import mainBlock from "@/components/main";
+import mainContent from "@/components/main.vue";
 
 export default {
   name: "Home",
   components: {
-    mainBlock,
+    mainContent,
   },
 };
 </script>
