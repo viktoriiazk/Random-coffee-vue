@@ -8,32 +8,31 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin felis est, viverra
         at vehicula quis, lacinia id lorem. In hac.
       </p>
-      <p v-text="message">rrr</p>
     </div>
   </div>
 </template>
 <script>
 import toggleMenu from "@/components/toggle-menu";
 import loginForm from "@/components/loginForm.vue";
-import axios from "axios";
+// import axios from "axios";
 export default {
   data(){
-    return {
-       messages: []
-    }
+    // return {
+    //    messages: []
+    // }
   },
   components: {
     toggleMenu,
     loginForm,
   },
-  async created() {
-      this.$root.$on("newUser", message => {
-  this.messages.push(message);
-  }
-  );
-    this.message = (await axios.get("http://localhost:3000/messages")).data;
+  // async created() {
+  //     this.$root.$on("newUser", message => {
+  // this.messages.push(message);
+  // }
+  // );
+  //   this.message = (await axios.get("http://localhost:3000/messages")).data;
 
-  },
+  // },
 };
 </script>
 <style lang="scss" scoped>

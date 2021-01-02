@@ -19,3 +19,16 @@
         transition: 0.3s;
     }
 }
+@mixin btn ($background, $color){
+    display: block;
+    border-radius: 20px;
+    background-color: $background;
+    border: 1px solid $color;
+    padding: 10px;
+}
+@mixin btn-hover ($background, $color) {
+:hover {
+    background-color: $background;
+    border: 1px solid $color;
+}
+}

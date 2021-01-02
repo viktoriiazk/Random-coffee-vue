@@ -112,7 +112,9 @@ export default {
     opacity: 0;
     color: $lightTextColor;
     &:hover {
-      color: red;
+      color: $darkTextColor;
+      transition: 0.1s;
+      transition-delay: none;
     }
     em {
       font-style: normal;
@@ -153,9 +155,5 @@ export default {
       transition-delay: 0.5s;
     }
 
-  span {
-   
-    transition-delay: 0.7s;
-  }
 }
 </style>

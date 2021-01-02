@@ -1,14 +1,13 @@
 <template>
   <div data-cursor-hover data-cursor-mix-blend-mode="difference" id="app">
     <!-- <particles-bg type="cobweb" :bg="true" /> -->
-    <!-- <particles-bg type="custom" :config="config" :bg="true" /> -->
+    <particles-bg type="custom" :config="config" :bg="true" /> 
 
-    <!-- <cursor-fx
+  <!-- <cursor-fx
       data-cursor-hover
       color-hover="#fff"
-      color="#fff"
-    /> -->
-
+       color="#fff"
+     /> -->
     <div class="container">
       <headerV />
       <router-view />
@@ -17,20 +16,20 @@
 </template>
 
 <script>
-// import { ParticlesBg } from "particles-bg-vue";
-import axios from "axios";
+import { ParticlesBg } from "particles-bg-vue";
 import headerV from "@/components/header.vue";
+import  config from "@/config.js";
 export default {
   name: "App",
   components: {
-    // ParticlesBg,
+    ParticlesBg,
     headerV,
   },
   data: function () {
     return {
       config: {
-        num: [15, 15],
-        rps: 0.5,
+        num: [5, 5],
+        rps: 1,
         radius: [4, 4],
         life: [4.5, 1],
         v: [3, 1],
@@ -39,7 +38,7 @@ export default {
         alpha: [6, 5],
         scale: [2.5, 0.5],
         position: "all", // all or center or {x:1,y:1,width:100,height:100}
-        color: ["#8071DC", "#F2C94C"],
+        color: ["#95baf5", "#F2C94C"],
         cross: "cross", // cross or bround
         random: null, // or null,
         g: 1, // gravity
@@ -57,14 +56,16 @@ export default {
      
     };
   },
-  async created() {
 
-    this.messages = await axios.get("http://localhost:3000/messages").data;
-      this.$root.$on("newUser", message => {
-  this.messages.push(message)
-  });
-  },
+  methods :  {
+    fb: function greet() {
+      return console.log('this is ' + config.facebookAuth);
+    }
+    
+  }
 };
+
+
 </script>
 
 <style lang="scss">
